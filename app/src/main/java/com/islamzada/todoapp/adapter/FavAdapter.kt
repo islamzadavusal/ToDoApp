@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
+import com.google.android.material.snackbar.Snackbar
 import com.islamzada.todoapp.R
 import com.islamzada.todoapp.databinding.CardDesignFavBinding
 import com.islamzada.todoapp.databinding.CardDesignNoteBinding
@@ -18,19 +19,30 @@ import com.islamzada.todoapp.util.go
 class FavAdapter (val context: Context, private var noteList: MutableList<Favorite>, var onClick: (Favorite) -> Unit, var onDeleteClick: (Favorite) -> Unit
 ) : BaseAdapter() {
 
+    private var filteredList: List<Favorite> = ArrayList()
+
+    fun filterByName(name: String) {
+        filteredList = if (name.isEmpty()) {
+            noteList
+        } else {
+            noteList.filter { it.title!!.contains(name, true) }
+        }
+        notifyDataSetChanged()
+    }
+
     fun addNewItem(newnoteList: List<Favorite>) {
         // Mevcut ürün listesini temizle ve yeni ürünleri ekleyerek güncelle
         noteList.clear()
         noteList.addAll(newnoteList)
-        notifyDataSetChanged()
+        filterByName("")
     }
 
     override fun getCount(): Int {
-        return noteList.count()
+        return filteredList.count()
     }
 
     override fun getItem(position: Int): Any {
-        return noteList[position]
+        return filteredList[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -51,14 +63,14 @@ class FavAdapter (val context: Context, private var noteList: MutableList<Favori
 
             newConvertView = binding.root
             holder = ViewHolder(binding, onClick, onDeleteClick)
-            holder.bind(noteList[position])
+            holder.bind(filteredList[position])
 
             newConvertView.tag = holder
         } else {
 
             holder = convertView.tag as ViewHolder
 
-            holder.bind(noteList[position])
+            holder.bind(filteredList[position])
         }
 
         return newConvertView!!
@@ -80,7 +92,10 @@ class FavAdapter (val context: Context, private var noteList: MutableList<Favori
             }
 
             binding.imageDelete.setOnClickListener {
+                Snackbar.make(it, "Do you want to delete ${note.title} ?", Snackbar.LENGTH_LONG)
+                    .setAction("YES") {
                 onDeleteClick(binding.note as Favorite)
+                    }.show()
             }
         }
     }

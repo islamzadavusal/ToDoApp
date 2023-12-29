@@ -1,6 +1,8 @@
 package com.islamzada.todoapp.fragments
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,19 +26,19 @@ class MainFragment : Fragment() {
 
     val viewModel: MainViewModel by viewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-
-
         binding = FragmentMainBinding.inflate(inflater)
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        // ProductListAdapter nesnesini oluşturun ve ayarlayın
-        adapter = MainAdapter(requireContext(), mutableListOf(),
-
-
+        adapter = MainAdapter(
+            requireContext(),
+            mutableListOf(),
             onClick = { note ->
                 val detailsFragment = DetailsFragment()
 
@@ -52,29 +54,36 @@ class MainFragment : Fragment() {
                     .addToBackStack(null)
                     .commit()
             },
-
-            // "onDeleteClick" fonksiyonu: Listedeki bir öğeyi sil
             onDeleteClick = { product ->
                 viewModel.delete(product)
             },
-                    onFavIconClick = { note ->
-                val favorite = Favorite(0,note.title, note.desc) // Assuming you have a constructor for Favorite class
+            onFavIconClick = { note ->
+                val favorite = Favorite(0, note.title, note.desc) // Assuming you have a constructor for Favorite class
                 viewModel.insertToFav(favorite)
-                        Toast.makeText(requireContext(), "Note added to Favorite", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Note added to Favorite", Toast.LENGTH_SHORT)
+                    .show()
             }
         )
 
         binding.floatingButton.setOnClickListener {
             val transition = MainFragmentDirections.toSave()
-            Navigation.go(it,transition)
+            Navigation.go(it, transition)
         }
 
         binding.rvMain.adapter = adapter
 
-        // ViewModel'den LiveData nesnesini alın ve nesneyi  obzerv etmek
         viewModel.getAllData().observe(viewLifecycleOwner, Observer { productList ->
-            // Adaptöre yeni ürünler eklemek ve listeyi güncellemek
             adapter.addNewItem(productList)
+        })
+
+        binding.editTextSearchMain.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                adapter.filterByName(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
         })
 
         return binding.root
