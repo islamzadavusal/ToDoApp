@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host_fragment"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.islamzada.todoapp.fragments.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/toUpdate"
+            app:destination="@id/updateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/saveFragment"
+        android:name="com.islamzada.todoapp.fragments.SaveFragment"
+        android:label="fragment_save"
+        tools:layout="@layout/fragment_save" />
+    <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="com.islamzada.todoapp.fragments.FavouriteFragment"
+        android:label="fragment_favourite"
+        tools:layout="@layout/fragment_favourite" />
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.islamzada.todoapp.fragments.UpdateFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.islamzada.todoapp.fragments.DetailsFragment"
+        android:label="DetailsFragment" />
+</navigation>
