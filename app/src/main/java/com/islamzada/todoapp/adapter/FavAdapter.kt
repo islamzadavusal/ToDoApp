@@ -1,7 +1,6 @@
 package com.islamzada.todoapp.adapter
 
 import android.content.Context
-import android.provider.ContactsContract.CommonDataKinds.Note
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,16 +8,17 @@ import android.widget.BaseAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.islamzada.todoapp.R
+import com.islamzada.todoapp.databinding.CardDesignFavBinding
 import com.islamzada.todoapp.databinding.CardDesignNoteBinding
 import com.islamzada.todoapp.entity.Favorite
 import com.islamzada.todoapp.entity.Notes
 import com.islamzada.todoapp.fragments.MainFragmentDirections
 import com.islamzada.todoapp.util.go
 
-class MainAdapter (val context: Context, private var noteList: MutableList<Notes>, var onClick: (Notes) -> Unit, var onDeleteClick: (Notes) -> Unit, var onFavIconClick: (Notes) -> Unit
+class FavAdapter (val context: Context, private var noteList: MutableList<Favorite>, var onClick: (Favorite) -> Unit, var onDeleteClick: (Favorite) -> Unit
 ) : BaseAdapter() {
 
-    fun addNewItem(newnoteList: List<Notes>) {
+    fun addNewItem(newnoteList: List<Favorite>) {
         // Mevcut ürün listesini temizle ve yeni ürünleri ekleyerek güncelle
         noteList.clear()
         noteList.addAll(newnoteList)
@@ -42,15 +42,15 @@ class MainAdapter (val context: Context, private var noteList: MutableList<Notes
         val holder: ViewHolder
 
         if (convertView == null) {
-            val binding: CardDesignNoteBinding = DataBindingUtil.inflate(
+            val binding: CardDesignFavBinding = DataBindingUtil.inflate(
                 LayoutInflater.from(context),
-                R.layout.card_design_note,
+                R.layout.card_design_fav,
                 parent,
                 false
             )
 
             newConvertView = binding.root
-            holder = ViewHolder(binding, onClick, onDeleteClick,onFavIconClick)
+            holder = ViewHolder(binding, onClick, onDeleteClick)
             holder.bind(noteList[position])
 
             newConvertView.tag = holder
@@ -65,35 +65,23 @@ class MainAdapter (val context: Context, private var noteList: MutableList<Notes
     }
 
     private class ViewHolder(
-        var binding: CardDesignNoteBinding,
-        var onClick: (Notes) -> Unit,
-        var onDeleteClick: (Notes) -> Unit,
-        var onFavIconClick: (Notes) -> Unit // Add this line
+        var binding: CardDesignFavBinding,
+        var onClick: (Favorite) -> Unit,
+        var onDeleteClick: (Favorite) -> Unit
     ) {
-        fun bind(note: Notes) {
+        fun bind(note: Favorite) {
             binding.textTitle.text = note.title
             binding.textDesc.text = note.desc
 
             binding.note = note
 
             binding.root.setOnClickListener {
-                onClick(binding.note as Notes)
+                onClick(binding.note as Favorite)
             }
 
             binding.imageDelete.setOnClickListener {
-                onDeleteClick(binding.note as Notes)
-            }
-
-            binding.imageUpdate.setOnClickListener {
-                val transition = MainFragmentDirections.toUpdate()
-                Navigation.go(it,transition)
-            }
-
-            // Add the following block for the favorite icon
-            binding.imageFav.setOnClickListener {
-                onFavIconClick(binding.note as Notes)
+                onDeleteClick(binding.note as Favorite)
             }
         }
     }
-
 }

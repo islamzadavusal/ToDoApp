@@ -10,18 +10,15 @@ import com.islamzada.todoapp.entity.Favorite
 import com.islamzada.todoapp.entity.Notes
 
 @Dao
-interface NotesDao {
+interface FavoriteDao {
 
     @Insert
-    suspend fun insert(notes: Notes)
+    suspend fun insertToFav(fav: Favorite)
 
-    @Query("SELECT * FROM notes")
-    fun getAll() : LiveData<List<Notes>>
+    @Query("SELECT * FROM favorite")
+    fun getAllFavorite() : LiveData<List<Favorite>>
 
     @Delete
-    suspend fun delete(notes: Notes)
-
-    @Update
-    suspend fun update(notes:Notes)
+    suspend fun deleteFavorite(fav: Favorite)
 
 }

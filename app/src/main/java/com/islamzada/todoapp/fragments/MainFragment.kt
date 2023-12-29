@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.islamzada.todoapp.R
 import com.islamzada.todoapp.adapter.MainAdapter
 import com.islamzada.todoapp.databinding.FragmentMainBinding
+import com.islamzada.todoapp.entity.Favorite
 import com.islamzada.todoapp.util.go
 import com.islamzada.todoapp.viewModels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -54,6 +56,11 @@ class MainFragment : Fragment() {
             // "onDeleteClick" fonksiyonu: Listedeki bir öğeyi sil
             onDeleteClick = { product ->
                 viewModel.delete(product)
+            },
+                    onFavIconClick = { note ->
+                val favorite = Favorite(0,note.title, note.desc) // Assuming you have a constructor for Favorite class
+                viewModel.insertToFav(favorite)
+                        Toast.makeText(requireContext(), "Note added to Favorite", Toast.LENGTH_SHORT).show()
             }
         )
 

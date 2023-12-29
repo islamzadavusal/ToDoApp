@@ -26,7 +26,11 @@
         android:id="@+id/favouriteFragment"
         android:name="com.islamzada.todoapp.fragments.FavouriteFragment"
         android:label="fragment_favourite"
-        tools:layout="@layout/fragment_favourite" />
+        tools:layout="@layout/fragment_favourite" >
+        <action
+            android:id="@+id/toUpdate_2"
+            app:destination="@id/updateFragment" />
+    </fragment>
     <fragment
         android:id="@+id/updateFragment"
         android:name="com.islamzada.todoapp.fragments.UpdateFragment"
