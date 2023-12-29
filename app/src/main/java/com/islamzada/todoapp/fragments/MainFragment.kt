@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import com.islamzada.todoapp.R
 import com.islamzada.todoapp.adapter.MainAdapter
 import com.islamzada.todoapp.databinding.FragmentMainBinding
+import com.islamzada.todoapp.util.go
 import com.islamzada.todoapp.viewModels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,7 +39,8 @@ class MainFragment : Fragment() {
                 val detailsFragment = DetailsFragment()
 
                 val bundle = Bundle().apply {
-                    putString("note", note.note)
+                    putString("title", note.title)
+                    putString("desc", note.desc)
                 }
 
                 detailsFragment.arguments = bundle
@@ -53,6 +56,11 @@ class MainFragment : Fragment() {
                 viewModel.delete(product)
             }
         )
+
+        binding.floatingButton.setOnClickListener {
+            val transition = MainFragmentDirections.toSave()
+            Navigation.go(it,transition)
+        }
 
         binding.rvMain.adapter = adapter
 

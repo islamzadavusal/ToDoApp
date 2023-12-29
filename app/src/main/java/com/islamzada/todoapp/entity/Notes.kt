@@ -10,5 +10,6 @@ import kotlinx.parcelize.Parcelize
 @Entity
 data class Notes (
     @PrimaryKey(autoGenerate = true) val id: Int,
-    @ColumnInfo(name = "note") val note: String) : Parcelable {
+    @ColumnInfo(name = "title") val title: String,
+    @ColumnInfo(name = "description") val desc: String) : Parcelable {
 }

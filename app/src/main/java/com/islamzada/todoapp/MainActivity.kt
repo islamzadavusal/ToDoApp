@@ -22,10 +22,5 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
 
-        binding.floatingButton.setOnClickListener {
-            navController.navigate(R.id.saveFragment)
-        }
-
-
     }
 }

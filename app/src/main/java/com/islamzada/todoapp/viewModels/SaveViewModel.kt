@@ -10,14 +10,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SaveNoteViewModel @Inject constructor (var repository: NotesRepository): ViewModel() {
+class SaveViewModel @Inject constructor (var repository: NotesRepository): ViewModel() {
 
-    val note = MutableLiveData<String>()
+    val title = MutableLiveData<String>()
+    val desc = MutableLiveData<String>()
 
     fun isInputValid(): Boolean {
-        val note = note.value.orEmpty()
+        val title = title.value.orEmpty()
+        val desc = desc.value.orEmpty()
 
-        return note.isNotEmpty()
+        return title.isNotEmpty() && desc.isNotEmpty()
     }
 
     fun insert(note: Notes) {

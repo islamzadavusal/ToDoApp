@@ -26,9 +26,12 @@ class DetailsFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        val note = arguments?.getString("note")
+        val title = arguments?.getString("title")
+        val desc = arguments?.getString("desc")
 
-        viewModel.note.value = note
+
+        viewModel.title.value = title
+        viewModel.desc.value = desc
 
         return binding.root
     }

@@ -1,24 +1,22 @@
 package com.islamzada.todoapp.fragments
 
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Note
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import com.islamzada.todoapp.R
 import com.islamzada.todoapp.databinding.FragmentSaveBinding
 import com.islamzada.todoapp.entity.Notes
-import com.islamzada.todoapp.viewModels.SaveNoteViewModel
+import com.islamzada.todoapp.viewModels.SaveViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SaveFragment : Fragment() {
     private lateinit var binding: FragmentSaveBinding
 
-    val viewModel: SaveNoteViewModel by viewModels()
+    val viewModel: SaveViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +32,8 @@ class SaveFragment : Fragment() {
             if (viewModel.isInputValid()) {
                 val note = Notes(
                     0,
-                    viewModel.note.value.orEmpty(),
+                    viewModel.title.value.orEmpty(),
+                    viewModel.desc.value.orEmpty()
                 )
                 viewModel.insert(note)
                 Toast.makeText(requireContext(), "Note Saved", Toast.LENGTH_SHORT).show()
@@ -54,7 +53,8 @@ class SaveFragment : Fragment() {
     }
 
     private fun resetFragment() {
-        binding.editText.text = null
+        binding.editTextTitle.text = null
+        binding.editTextDesc.text = null
 
     }
 

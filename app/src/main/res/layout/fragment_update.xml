@@ -1,4 +1,6 @@
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -9,9 +11,6 @@
     </data>
 
     <androidx.core.widget.NestedScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_color"
@@ -19,8 +18,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:background="@color/background_color"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/background_color">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarUpdate"
@@ -47,40 +46,85 @@
                     android:textColor="@color/white"
                     android:textSize="20dp" />
 
-
             </androidx.appcompat.widget.Toolbar>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewUpdate"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/card_background"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintBottom_toTopOf="@+id/buttonUpdate"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbarUpdate">
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewUpdateTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="30dp"
                     android:background="@drawable/card_background"
-                    android:orientation="vertical">
+                    app:cardCornerRadius="10dp">
 
-                    <EditText
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/black" />
+                        android:background="@drawable/card_background"
+                        android:orientation="vertical">
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        <EditText
+                            android:id="@+id/editTextTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="Enter the Title"
+                            android:paddingBottom="15dp"
+                            android:text="@={viewModel.title}"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewUpdateDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="50dp"
+                    android:background="@drawable/card_background"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/card_background"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/editTextDesc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="Enter the Description"
+                            android:paddingBottom="15dp"
+                            android:text="@={viewModel.desc}"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/buttonUpdate"
@@ -88,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="30dp"
                 android:background="@drawable/button_background"
                 android:text="@string/btn_update"
                 android:textColor="@color/white"
@@ -96,11 +140,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent" />
-
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
 </layout>
-

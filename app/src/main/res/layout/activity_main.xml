@@ -39,17 +39,6 @@
             app:itemTextColor="@color/white"
             app:menu="@menu/bottom_nav_menu" >
 
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/add"
-                android:backgroundTint="@color/color_3"/>
-
-
-
         </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     </LinearLayout>

@@ -69,7 +69,8 @@ class MainAdapter (val context: Context, private var noteList: MutableList<Notes
         var onDeleteClick: (Notes) -> Unit
     ) {
         fun bind(note: Notes) {
-            binding.textNote.text = note.note
+            binding.textTitle.text = note.title
+            binding.textDesc.text = note.desc
 
             binding.note = note
 

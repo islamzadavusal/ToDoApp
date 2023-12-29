@@ -8,5 +8,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailsViewModel  @Inject constructor () : ViewModel() {
-    val note = MutableLiveData<String>()
+    val title = MutableLiveData<String>()
+    val desc = MutableLiveData<String>()
 }

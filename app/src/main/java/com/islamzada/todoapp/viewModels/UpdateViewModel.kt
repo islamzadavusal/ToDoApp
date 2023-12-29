@@ -13,7 +13,8 @@ import javax.inject.Inject
 @HiltViewModel
 class UpdateViewModel @Inject constructor (var repository: NotesRepository): ViewModel() {
 
-    val note = MutableLiveData<String>()
+    val title = MutableLiveData<String>()
+    val desc = MutableLiveData<String>()
 
 
     fun update(note: Notes) {
