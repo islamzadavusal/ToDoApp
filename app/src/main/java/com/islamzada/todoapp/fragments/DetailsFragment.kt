@@ -15,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
 
-    val viewModel: DetailsViewModel by viewModels()
+    private val detailsViewModel: DetailsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,14 +24,14 @@ class DetailsFragment : Fragment() {
         binding = FragmentDetailsBinding.inflate(inflater)
 
         binding.lifecycleOwner = this
-        binding.viewModel = viewModel
+        binding.viewModel = detailsViewModel
 
         val title = arguments?.getString("title")
         val desc = arguments?.getString("desc")
 
 
-        viewModel.title.value = title
-        viewModel.desc.value = desc
+        detailsViewModel.title.value = title
+        detailsViewModel.desc.value = desc
 
         return binding.root
     }

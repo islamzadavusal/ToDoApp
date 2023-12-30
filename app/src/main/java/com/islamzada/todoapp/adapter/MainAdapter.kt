@@ -105,9 +105,10 @@ class MainAdapter(
             }
 
             binding.imageUpdate.setOnClickListener {
-                val transition = MainFragmentDirections.toUpdate()
-                Navigation.go(it, transition)
+                val action = MainFragmentDirections.toUpdate(note)
+                Navigation.findNavController(it).navigate(action)
             }
+
 
             binding.imageFav.setOnClickListener {
                 onFavIconClick(binding.note as Notes)

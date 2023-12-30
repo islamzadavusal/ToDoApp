@@ -35,7 +35,11 @@
         android:id="@+id/updateFragment"
         android:name="com.islamzada.todoapp.fragments.UpdateFragment"
         android:label="fragment_update"
-        tools:layout="@layout/fragment_update" />
+        tools:layout="@layout/fragment_update" >
+        <argument
+            android:name="note"
+            app:argType="com.islamzada.todoapp.entity.Notes" />
+    </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.islamzada.todoapp.fragments.DetailsFragment"

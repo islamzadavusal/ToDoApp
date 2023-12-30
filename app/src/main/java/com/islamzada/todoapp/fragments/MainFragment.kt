@@ -24,7 +24,7 @@ class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private lateinit var adapter: MainAdapter
 
-    val viewModel: MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +34,7 @@ class MainFragment : Fragment() {
         binding = FragmentMainBinding.inflate(inflater)
 
         binding.lifecycleOwner = this
-        binding.viewModel = viewModel
+        binding.viewModel = mainViewModel
 
         adapter = MainAdapter(
             requireContext(),
@@ -55,11 +55,11 @@ class MainFragment : Fragment() {
                     .commit()
             },
             onDeleteClick = { product ->
-                viewModel.delete(product)
+                mainViewModel.delete(product)
             },
             onFavIconClick = { note ->
                 val favorite = Favorite(0, note.title, note.desc) // Assuming you have a constructor for Favorite class
-                viewModel.insertToFav(favorite)
+                mainViewModel.insertToFav(favorite)
                 Toast.makeText(requireContext(), "Note added to Favorite", Toast.LENGTH_SHORT)
                     .show()
             }
@@ -72,7 +72,7 @@ class MainFragment : Fragment() {
 
         binding.rvMain.adapter = adapter
 
-        viewModel.getAllData().observe(viewLifecycleOwner, Observer { productList ->
+        mainViewModel.getAllData().observe(viewLifecycleOwner, Observer { productList ->
             adapter.addNewItem(productList)
         })
 

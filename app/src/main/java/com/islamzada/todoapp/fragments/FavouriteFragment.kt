@@ -26,7 +26,7 @@ class FavouriteFragment : Fragment() {
     private lateinit var binding: FragmentFavouriteBinding
     private lateinit var adapter: FavAdapter
 
-    val viewModel: FavoriteViewModel by viewModels()
+    private val favViewModel: FavoriteViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?
     ): View? {
@@ -35,7 +35,7 @@ class FavouriteFragment : Fragment() {
         binding = FragmentFavouriteBinding.inflate(inflater)
 
         binding.lifecycleOwner = this
-        binding.viewModel = viewModel
+        binding.viewModel = favViewModel
 
         // ProductListAdapter nesnesini oluşturun ve ayarlayın
         adapter = FavAdapter(requireContext(), mutableListOf(),
@@ -59,14 +59,14 @@ class FavouriteFragment : Fragment() {
 
             // "onDeleteClick" fonksiyonu: Listedeki bir öğeyi sil
             onDeleteClick = { fav ->
-                viewModel.deleteFav(fav)
+                favViewModel.deleteFav(fav)
             }
         )
 
         binding.rvFav.adapter = adapter
 
         // ViewModel'den LiveData nesnesini alın ve nesneyi  obzerv etmek
-        viewModel.getAllDataFav().observe(viewLifecycleOwner, Observer { productList ->
+        favViewModel.getAllDataFav().observe(viewLifecycleOwner, Observer { productList ->
             // Adaptöre yeni ürünler eklemek ve listeyi güncellemek
             adapter.addNewItem(productList)
         })

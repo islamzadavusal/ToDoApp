@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SaveFragment : Fragment() {
     private lateinit var binding: FragmentSaveBinding
 
-    val viewModel: SaveViewModel by viewModels()
+    private val saveViewModel: SaveViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,17 +25,17 @@ class SaveFragment : Fragment() {
         binding = FragmentSaveBinding.inflate(inflater, container, false)
 
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewModel = viewModel
+        binding.viewModel = saveViewModel
 
 
         binding.buttonSave.setOnClickListener {
-            if (viewModel.isInputValid()) {
+            if (saveViewModel.isInputValid()) {
                 val note = Notes(
                     0,
-                    viewModel.title.value.orEmpty(),
-                    viewModel.desc.value.orEmpty()
+                    saveViewModel.title.value.orEmpty(),
+                    saveViewModel.desc.value.orEmpty()
                 )
-                viewModel.insert(note)
+                saveViewModel.insert(note)
                 Toast.makeText(requireContext(), "Note Saved", Toast.LENGTH_SHORT).show()
 
                resetFragment()
