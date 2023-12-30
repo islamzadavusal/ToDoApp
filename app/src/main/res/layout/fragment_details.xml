@@ -14,8 +14,35 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@color/white"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/color_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/backDetails"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/back_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/text_details"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+        </androidx.appcompat.widget.Toolbar>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -24,14 +51,13 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
             app:cardBackgroundColor="@color/color_5"
             app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/toolbarDetails">
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -49,9 +75,9 @@
                         android:layout_marginHorizontal="15dp"
                         android:layout_marginTop="20dp"
                         android:padding="5dp"
+                        android:text="@string/title"
                         android:textColor="@color/color_4"
-                        android:textSize="30dp"
-                        android:text="Title:" />
+                        android:textSize="30dp" />
 
                     <TextView
                         android:id="@+id/note_title"
@@ -60,9 +86,9 @@
                         android:layout_marginHorizontal="15dp"
                         android:layout_marginVertical="5dp"
                         android:padding="5dp"
+                        android:text="@{viewModel.title}"
                         android:textColor="@color/black"
                         android:textSize="20dp"
-                        android:text="@{viewModel.title}"
                         tools:text="..." />
 
                     <TextView
@@ -71,9 +97,9 @@
                         android:layout_marginHorizontal="15dp"
                         android:layout_marginTop="20dp"
                         android:padding="5dp"
+                        android:text="@string/desc"
                         android:textColor="@color/color_4"
-                        android:textSize="30dp"
-                        android:text="Description:" />
+                        android:textSize="28dp" />
 
                     <TextView
                         android:id="@+id/note_desc"
@@ -82,9 +108,9 @@
                         android:layout_marginHorizontal="15dp"
                         android:layout_marginBottom="15dp"
                         android:padding="5dp"
-                        android:textColor="@color/black"
-                        android:textSize="20dp"
                         android:text="@{viewModel.desc}"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
                         tools:text="..." />
 
                 </LinearLayout>

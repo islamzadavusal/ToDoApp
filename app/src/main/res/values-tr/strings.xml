@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">NotePack</string>
+
+    <string name="home">Ana Sayfa</string>
+    <string name="favorite">Favoriler</string>
+
+    <string name="btn_save">Kaydet</string>
+    <string name="btn_update">Güncelle</string>
+
+
+    <string name="text_update">Notu Güncelle</string>
+    <string name="text_save">Notu Kaydet</string>
+    <string name="text_details">Notunuz</string>
+
+    <string name="enter_title">Başlığı Girin</string>
+    <string name="enter_desc">Açıklamayı girin</string>
+
+    <string name="search">Aramak..</string>
+
+    <string name="title">Başlık:</string>
+    <string name="desc">Açıklama:</string>
+
+    <string name="error">Lütfen bütün boşlukları doldurun</string>
+    <string name="notSaved">Not Kaydedildi</string>
+    <string name="addFav">Not Favorilere eklendi</string>
+
+
+</resources>

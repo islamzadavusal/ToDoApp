@@ -42,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Save Note"
+                    android:text="@string/text_save"
                     android:textColor="@color/white"
                     android:textSize="20dp" />
 
@@ -83,7 +83,7 @@
                             android:layout_gravity="center"
                             android:layout_marginHorizontal="10dp"
                             android:layout_marginTop="5dp"
-                            android:hint="Enter the Title"
+                            android:hint="@string/enter_title"
                             android:textColorHint="@color/color_4"
                             android:paddingBottom="15dp"
                             android:text="@={viewModel.title}"
@@ -115,7 +115,7 @@
                             android:layout_gravity="center"
                             android:layout_marginHorizontal="10dp"
                             android:layout_marginTop="5dp"
-                            android:hint="Enter the Description"
+                            android:hint="@string/enter_desc"
                             android:textColorHint="@color/color_4"
                             android:paddingBottom="15dp"
                             android:text="@={viewModel.desc}"

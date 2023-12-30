@@ -26,6 +26,10 @@ class DetailsFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = detailsViewModel
 
+        binding.backDetails.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
         val title = arguments?.getString("title")
         val desc = arguments?.getString("desc")
 

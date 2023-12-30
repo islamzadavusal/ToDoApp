@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import com.islamzada.todoapp.R
 import com.islamzada.todoapp.databinding.FragmentSaveBinding
 import com.islamzada.todoapp.entity.Notes
 import com.islamzada.todoapp.viewModels.SaveViewModel
@@ -36,12 +37,12 @@ class SaveFragment : Fragment() {
                     saveViewModel.desc.value.orEmpty()
                 )
                 saveViewModel.insert(note)
-                Toast.makeText(requireContext(), "Note Saved", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.notSaved), Toast.LENGTH_SHORT).show()
 
                resetFragment()
 
             } else {
-                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.error), Toast.LENGTH_SHORT).show()
             }
         }
 

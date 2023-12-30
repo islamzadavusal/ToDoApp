@@ -60,7 +60,7 @@ class MainFragment : Fragment() {
             onFavIconClick = { note ->
                 val favorite = Favorite(0, note.title, note.desc) // Assuming you have a constructor for Favorite class
                 mainViewModel.insertToFav(favorite)
-                Toast.makeText(requireContext(), "Note added to Favorite", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), getString(R.string.addFav), Toast.LENGTH_SHORT)
                     .show()
             }
         )
