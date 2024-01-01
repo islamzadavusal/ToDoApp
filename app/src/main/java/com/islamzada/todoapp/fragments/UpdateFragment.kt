@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.islamzada.todoapp.R
@@ -45,15 +46,20 @@ class UpdateFragment : Fragment() {
             updateViewModel.date.value = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date())
             updateViewModel.time.value = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
 
-
+            if (updateViewModel.isInputValid()) {
             val updatedNote = note.copy(
-                title = binding.editTextTitle.text.toString(),
-                desc = binding.editTextDesc.text.toString(),
-                date = updateViewModel.date.value.toString(),
-                time = updateViewModel.time.value.toString()
+                title = updateViewModel.title.value.orEmpty(),
+                desc = updateViewModel.desc.value.orEmpty(),
+                date = updateViewModel.date.value.orEmpty(),
+                time = updateViewModel.time.value.orEmpty()
             )
             updateViewModel.update(updatedNote)
             requireActivity().onBackPressed()
+            Toast.makeText(requireContext(), getString(R.string.notUpdated), Toast.LENGTH_SHORT).show()
+
+            } else {
+                Toast.makeText(requireContext(), getString(R.string.error), Toast.LENGTH_SHORT).show()
+            }
         }
 
         return binding.root

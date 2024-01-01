@@ -22,6 +22,7 @@
 
     <string name="error">Lütfen bütün boşlukları doldurun</string>
     <string name="notSaved">Not Kaydedildi</string>
+    <string name="notUpdated">Not Güncellendi</string>
     <string name="addFav">Not Favorilere eklendi</string>
 
 

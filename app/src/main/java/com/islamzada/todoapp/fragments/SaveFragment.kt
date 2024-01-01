@@ -48,9 +48,8 @@ class SaveFragment : Fragment() {
                 )
 
                 saveViewModel.insert(note)
+                requireActivity().onBackPressed()
                 Toast.makeText(requireContext(), getString(R.string.notSaved), Toast.LENGTH_SHORT).show()
-
-               resetFragment()
 
             } else {
                 Toast.makeText(requireContext(), getString(R.string.error), Toast.LENGTH_SHORT).show()
@@ -62,16 +61,5 @@ class SaveFragment : Fragment() {
         }
 
         return binding.root
-    }
-
-    private fun resetFragment() {
-        binding.editTextTitle.text = null
-        binding.editTextDesc.text = null
-
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        resetFragment()
     }
 }

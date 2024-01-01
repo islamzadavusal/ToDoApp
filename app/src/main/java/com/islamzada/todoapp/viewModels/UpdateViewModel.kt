@@ -19,6 +19,13 @@ class UpdateViewModel @Inject constructor (var repository: NotesRepository): Vie
     var time = MutableLiveData<String>()
     var date = MutableLiveData<String>()
 
+    fun isInputValid(): Boolean {
+        val title = title.value.orEmpty()
+        val desc = desc.value.orEmpty()
+
+        return title.isNotEmpty() && desc.isNotEmpty()
+    }
+
 
     fun update(note: Notes) {
         viewModelScope.launch {

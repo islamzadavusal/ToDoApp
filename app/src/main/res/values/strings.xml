@@ -22,6 +22,7 @@
 
     <string name="error">Please fill in all fields</string>
     <string name="notSaved">Note Saved</string>
+    <string name="notUpdated">Note Updated</string>
     <string name="addFav">Note added to Favorite</string>
 
 </resources>
