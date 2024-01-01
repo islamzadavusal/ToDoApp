@@ -11,6 +11,9 @@ import com.islamzada.todoapp.R
 import com.islamzada.todoapp.databinding.FragmentUpdateBinding
 import com.islamzada.todoapp.viewModels.UpdateViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 @AndroidEntryPoint
 class UpdateFragment : Fragment() {
@@ -31,15 +34,23 @@ class UpdateFragment : Fragment() {
 
         updateViewModel.title.value = (note.title)
         updateViewModel.desc.value = (note.desc)
+        updateViewModel.date.value = (note.date)
+        updateViewModel.time.value = (note.time)
 
         binding.backUpdate.setOnClickListener {
             requireActivity().onBackPressed()
         }
 
         binding.buttonUpdate.setOnClickListener {
+            updateViewModel.date.value = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date())
+            updateViewModel.time.value = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
+
+
             val updatedNote = note.copy(
                 title = binding.editTextTitle.text.toString(),
-                desc = binding.editTextDesc.text.toString()
+                desc = binding.editTextDesc.text.toString(),
+                date = updateViewModel.date.value.toString(),
+                time = updateViewModel.time.value.toString()
             )
             updateViewModel.update(updatedNote)
             requireActivity().onBackPressed()

@@ -90,6 +90,8 @@ class MainAdapter(
         fun bind(note: Notes) {
             binding.textTitle.text = note.title
             binding.textDesc.text = note.desc
+            binding.textTime.text = note.time
+            binding.textDate.text = note.date
 
             binding.note = note
 

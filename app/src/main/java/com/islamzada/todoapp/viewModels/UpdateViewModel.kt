@@ -16,6 +16,9 @@ class UpdateViewModel @Inject constructor (var repository: NotesRepository): Vie
     val title = MutableLiveData<String>()
     val desc = MutableLiveData<String>()
 
+    var time = MutableLiveData<String>()
+    var date = MutableLiveData<String>()
+
 
     fun update(note: Notes) {
         viewModelScope.launch {

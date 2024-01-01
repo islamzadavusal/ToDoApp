@@ -15,6 +15,9 @@ class SaveViewModel @Inject constructor (var repository: NotesRepository): ViewM
     val title = MutableLiveData<String>()
     val desc = MutableLiveData<String>()
 
+    var time = MutableLiveData<String>()
+    var date = MutableLiveData<String>()
+
     fun isInputValid(): Boolean {
         val title = title.value.orEmpty()
         val desc = desc.value.orEmpty()

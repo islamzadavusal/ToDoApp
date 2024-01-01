@@ -12,6 +12,9 @@ import com.islamzada.todoapp.databinding.FragmentSaveBinding
 import com.islamzada.todoapp.entity.Notes
 import com.islamzada.todoapp.viewModels.SaveViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 @AndroidEntryPoint
 class SaveFragment : Fragment() {
@@ -30,12 +33,20 @@ class SaveFragment : Fragment() {
 
 
         binding.buttonSave.setOnClickListener {
+
+            saveViewModel.date.value = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date())
+
+            saveViewModel.time.value = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
+
             if (saveViewModel.isInputValid()) {
                 val note = Notes(
                     0,
                     saveViewModel.title.value.orEmpty(),
-                    saveViewModel.desc.value.orEmpty()
+                    saveViewModel.desc.value.orEmpty(),
+                    saveViewModel.date.value.orEmpty(),
+                    saveViewModel.time.value.orEmpty()
                 )
+
                 saveViewModel.insert(note)
                 Toast.makeText(requireContext(), getString(R.string.notSaved), Toast.LENGTH_SHORT).show()
 
