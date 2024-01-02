@@ -25,5 +25,9 @@
     <string name="notUpdated">Not Güncellendi</string>
     <string name="addFav">Not Favorilere eklendi</string>
 
+    <string name="exit_dialog_message">Uygulamadan çıkmak istiyor musunuz ?</string>
+    <string name="positive_button_text">Evet</string>
+    <string name="negative_button_text">Hayır</string>
+
 
 </resources>

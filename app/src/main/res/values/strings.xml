@@ -25,4 +25,8 @@
     <string name="notUpdated">Note Updated</string>
     <string name="addFav">Note added to Favorite</string>
 
+    <string name="exit_dialog_message">Do you want to exit the application ?</string>
+    <string name="positive_button_text">Yes</string>
+    <string name="negative_button_text">No</string>
+
 </resources>
