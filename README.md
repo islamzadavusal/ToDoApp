@@ -18,3 +18,24 @@ DAO (Data Access Object): The addition of DAO facilitates CRUD-like operations, 
 # Multilingual Support
 
 The application caters to a diverse audience by offering language options in both English and Turkish. Users can seamlessly switch between languages based on their preferences.
+
+# Screenshots of the application
+![Splash Screen](https://github.com/islamzadavusal/ToDoApp/assets/120246254/988fe11f-c7d2-4a3b-8be4-b409f40949f5)
+
+![Main Screen](https://github.com/islamzadavusal/ToDoApp/assets/120246254/f7badb2e-16c4-43dc-83b9-41e397fc45b3)
+
+![Favorite Screen](https://github.com/islamzadavusal/ToDoApp/assets/120246254/567fde0f-a93f-487d-9d34-0f89f3e02c61)
+
+![Save Screen](https://github.com/islamzadavusal/ToDoApp/assets/120246254/e3cbd41b-164f-4e82-8605-2e60243a3133)
+
+![Update Screen](https://github.com/islamzadavusal/ToDoApp/assets/120246254/0e8f05e5-88ec-4c6b-b5eb-5d67d8592947)
+
+![Details Screen](https://github.com/islamzadavusal/ToDoApp/assets/120246254/bec3e0ff-baa0-410b-9673-dcb6722d80ae)
+
+
+
+
+
+
+
+
