@@ -6,7 +6,7 @@ import com.islamzada.todoapp.dao.NotesDao
 import com.islamzada.todoapp.entity.Favorite
 import com.islamzada.todoapp.entity.Notes
 
-@Database(entities = [Notes::class], version = 2)
+@Database(entities = [Notes::class], version = 1)
 abstract class NotesDatabase : RoomDatabase() {
     abstract fun noteDao(): NotesDao
 }
